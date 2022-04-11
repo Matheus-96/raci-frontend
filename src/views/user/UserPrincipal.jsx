@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 
+import { UserCreate, LaunchModal } from "./UserCreate";
+
 export function UserPrincipal() {
 
     const [users, setUsers] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [registerModal, setRegisterModal] = useState(false)
 
     function deleteUser(id) {
         setIsLoading(true)
@@ -37,9 +40,12 @@ export function UserPrincipal() {
     return (
 
         <div className="container">
+
+            <UserCreate setIsLoading={setIsLoading} getUsers={getUsers} setRegisterModal={setRegisterModal} registerModal={registerModal} />
+
             {
                 isLoading == true && (
-                    <div className="position-absolute start-50 top-50 translate-middle card p-5 d-flex align-items-center">
+                    <div className="position-absolute start-50 top-50 translate-middle card p-5 d-flex align-items-center zindex-fixed" style={{ zIndex: 1080 }}>
                         <div class="spinner-grow start-50" role="status" />
                         <h1 className="fs-4 mt-4">Loading...</h1>
                     </div>
@@ -50,9 +56,10 @@ export function UserPrincipal() {
                 <h1 className="fs-1">
                     Usuários
                 </h1>
-                <button className="btn btn-success">
+                <LaunchModal class="btn btn-success"/>
+                {/* <button className="" onClick={() => setRegisterModal(true)}>
                     Cadastrar
-                </button>
+                </button> */}
             </header>
             <content>
                 <table class="table">

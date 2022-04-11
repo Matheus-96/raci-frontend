@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export function Navbar() {
+
+    const [user, setUser] = useState("")
+
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem("loggedUser")))
+        
+    }, [])
+
+    useEffect(() => {
+    })
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Matriz RACI</a>
+                    <a className="navbar-brand" href="/">Matriz RACI</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -23,6 +33,7 @@ export function Navbar() {
                             </li>
                         </ul>
                     </div>
+                            <a className="nav-item me-3" href="/">{user.name || ""}</a>
                 </div>
             </nav>
         </>
