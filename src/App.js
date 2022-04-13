@@ -6,6 +6,7 @@ import { Navbar } from './common/navbar';
 import { UserPrincipal } from './views/user/UserPrincipal'
 import { Login } from './common/Login';
 import { ActivityPrincipal } from './views/activity/ActivityPrincipal';
+import {ActivityView} from './views/activity/ActivityView';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/usuarios' element={<UserPrincipal />} />
           <Route path='/atividades' element={<ActivityPrincipal/>} />
+          <Route path='/atividades/:id_activity' element={<ActivityView/>} />
           <Route path='/notificacoes' />
         </Routes>
       </BrowserRouter>

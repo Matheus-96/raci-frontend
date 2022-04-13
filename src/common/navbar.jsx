@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 
 export function Navbar() {
 
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState({name: ""})
 
     useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("loggedUser")))
-        
+        setUser(JSON.parse(localStorage.getItem("loggedUser")) || {})
     }, [])
 
-    useEffect(() => {
-    })
+
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -33,7 +31,9 @@ export function Navbar() {
                             </li>
                         </ul>
                     </div>
-                            <a className="nav-item me-3" href="/">{user.name || ""}</a>
+                    <a className="nav-item me-3" href="/">{
+                        user.name ? user.name : ""
+                    }</a>
                 </div>
             </nav>
         </>

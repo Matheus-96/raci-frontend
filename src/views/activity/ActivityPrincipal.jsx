@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ActivityCreate, LaunchModal } from "./ActivityCreate";
+import { useNavigate } from "react-router-dom";
+
 export const ActivityPrincipal = (props) => {
+    
+    const navigate = useNavigate()
 
     const [users, setUsers] = useState([])
     const [activities, setActivities] = useState([])
@@ -41,7 +45,7 @@ export const ActivityPrincipal = (props) => {
                 {
                     activities.map((e, i) => {
                         return (
-                            <div className="border p-2 row mt-2">
+                            <div className="border p-2 row mt-2" onClick={()=>navigate(`/atividades/${e.activity_id._id}`)}>
                                 <div className="col-md-8">
                                     <small>
                                         {e.activity_id.dateCreated}
